@@ -6,6 +6,7 @@
     <title>Saludo</title>
 </head>
 <body>
+    <!-- vista para saludo -->
     <h1>Hola {{ $name }} {{ $lastname }}</h1>
 </body>
 </html>

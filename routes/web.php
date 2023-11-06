@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Rutas para operaciones básicas
 Route::get('/suma/{num1}/{num2}', function (string $num1, string $num2) {
     return 'Resultado: ' . $num1 + $num2;
 })->where(['num1' => '[0-9]+', 'num2' => '[0-9]+']);
@@ -33,10 +34,11 @@ Route::get('/division/{num1}/{num2}', function (string $num1, string $num2) {
     return 'Resultado: ' . $num1 / $num2;
 })->where(['num1' => '[0-9]+', 'num2' => '[0-9]+']);
 
+// rutas para saludos
 Route::get('/saludo/{name}/{lastname?}', function (string $name, ?string $lastname = null) {
     return 'Hola '.$name .' ' .$lastname;
 })->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
-
+//ruta para saludo desde vista
 Route::get('/greeting/{name}/{lastname?}', function (string $name, ?string $lastname = null) {
     return view('greeting', ['name' => $name, 'lastname' => $lastname]);
 })->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
