@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,8 @@ Route::get('/saludo/{name}/{lastname?}', function (string $name, ?string $lastna
     return 'Hola '.$name .' ' .$lastname;
 })->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
 //ruta para saludo desde vista
-Route::get('/greeting/{name}/{lastname?}', function (string $name, ?string $lastname = null) {
-    return view('greeting', ['name' => $name, 'lastname' => $lastname]);
-})->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
+// Route::get('/greeting/{name}/{lastname?}', function (string $name, ?string $lastname = null) {
+//     return view('greeting', ['name' => $name, 'lastname' => $lastname]);
+// })->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
+
+Route::get('/greeting/{name}/{lastname?}', [UserController::class, 'show'])->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
