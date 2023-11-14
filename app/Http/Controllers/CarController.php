@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Car;
+use App\Http\Requests\StoreCarRequest;
+use App\Http\Requests\UpdateCarRequest;
 
-class UserController extends Controller
+class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $cars = Car::all();
+        return $cars;
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCarRequest $request)
     {
         //
     }
@@ -25,15 +28,16 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $name, ?string $lastname = null)
+    public function show(string $car)
     {
-        return view('greeting', ['name' => $name, 'lastname' => $lastname]);
+        $car = Car::find($car);
+        return $car;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCarRequest $request, Car $car)
     {
         //
     }
@@ -41,7 +45,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Car $car)
     {
         //
     }

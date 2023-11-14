@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,7 @@ Route::get('/saludo/{name}/{lastname?}', function (string $name, ?string $lastna
 // })->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
 
 Route::get('/greeting/{name}/{lastname?}', [UserController::class, 'show'])->where(['name' => '[A-Za-z]+', 'lastname' => '[A-Za-z]+']);
+
+//Rutas para carritos
+Route::get('/carritos', [CarController::class, 'index']);
+Route::get('/carritos/{car}', [CarController::class, 'show'])->where(['car' => '[0-9]+']);
